@@ -1,0 +1,11 @@
+import bs4, re
+for ria in range(4):
+   exampleFile = open(r'\messages%s.html' % (ria + 1), encoding='utf-8') #html files, exported from Telegram
+   exampleFile1 = exampleFile.read()
+   
+   with open(r'\texts.txt', 'a', encoding='utf-8') as file: #file with Telegram posts
+       exampleSoup = bs4.BeautifulSoup(exampleFile1, features="lxml")
+       title1 = exampleSoup.find_all('div', {'class': 'body'})
+       for title1 in exampleSoup.find_all('div', {'class': 'body'}):
+       
+          print(title1.text, file=file)
