@@ -1,0 +1,12 @@
+import re
+for hs in range (15):
+    exampleFile = open(r'\sol_%s.txt' % (hs + 1), encoding = 'utf-8') #Telegram posts
+    exampleFile1 = exampleFile.read()
+    with open (r'\file_%s.txt' % (hs + 1), 'a', encoding='utf-8') as file: #file with the keywords
+        print('----------------------%s----------------------' % (hs + 1))
+        nuc = re.compile(r'ядерн\w+ (\w+)')
+        nucl = nuc.findall(exampleFile1)
+        print('\n'.join(nucl), file=file)
+        atom = re.compile(r'атомн\w+ (\w+)')
+        atomic = atom.findall(exampleFile1)
+        print('\n'.join(atomic), file=file)
